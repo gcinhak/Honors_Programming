@@ -36,6 +36,7 @@ class MainWindow(QMainWindow):
         vbox1.addLayout(hbox2)
 
         widget.setLayout(vbox1)
+
         self.setCentralWidget(widget)
         self.setWindowTitle("Nested Layout")
 

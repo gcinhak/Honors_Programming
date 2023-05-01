@@ -1,7 +1,8 @@
-### Practice Exercise 12 ###
+### Practice Exercise 12. QRadioButton ###
 
 import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication, QRadioButton, QHBoxLayout, QWidget, QLabel, QVBoxLayout
+
 
 class MainWindow(QMainWindow):
     def __init__(self):

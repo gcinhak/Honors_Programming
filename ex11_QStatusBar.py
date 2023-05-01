@@ -10,16 +10,16 @@ class MainWindow(QMainWindow):
         self.init_ui()
 
     def init_ui(self):
-        # StatusBar
+        # StatusBar 예제1
         self.statusbar = QStatusBar()
         self.setStatusBar(self.statusbar)
         self.statusbar.showMessage("Developed by students in the IT-AI track")
 
-
+        # StatusBar 예제2
         # self.statusBar().showMessage('Developed by students in the IT-AI track')
 
         self.setGeometry(300, 300, 600, 200)
-        self.setWindowTitle('QHBoxLayout')
+        self.setWindowTitle('QStatusBar')
 
 if __name__ == '__main__':
     app = QApplication([])

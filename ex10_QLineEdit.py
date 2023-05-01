@@ -3,6 +3,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QLineEdit, QVBoxLayout, QLabel
 
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -18,9 +19,8 @@ class MainWindow(QMainWindow):
         self.line_edit.setMaxLength(100)
         self.line_edit.setPlaceholderText("Enter your text")
 
-        # uncomment this to make read only
         self.readonly_line_edit = QLineEdit()
-        self.readonly_line_edit.setReadOnly(True)
+        self.readonly_line_edit.setReadOnly(True) # uncomment this to make read only
 
         self.line_edit.returnPressed.connect(self.return_pressed)
         self.line_edit.editingFinished.connect(self.editing_finished)

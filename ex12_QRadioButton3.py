@@ -1,4 +1,4 @@
-### Example12. QRadioButton ###
+### Example12. QRadioButton3 - slot 하나 사용 ###
 
 import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication, QRadioButton, QVBoxLayout, QWidget

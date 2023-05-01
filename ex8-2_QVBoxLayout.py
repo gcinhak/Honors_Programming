@@ -29,7 +29,6 @@ class MainWindow(QMainWindow):
         label4.setStyleSheet('background-color: #F2BD1D; font-size: 20px; font-weight: bold;')
         label4.setAlignment(Qt.AlignBottom | Qt.AlignHCenter)
 
-
         vBox.addWidget(label1)
         vBox.addWidget(label2)
         vBox.addWidget(label3)

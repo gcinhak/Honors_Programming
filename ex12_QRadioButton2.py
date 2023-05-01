@@ -1,4 +1,4 @@
-### Example12. QRadioButton ###
+### Example12. QRadioButton2 - toggled ###
 
 import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication, QRadioButton, QVBoxLayout, QWidget
@@ -28,6 +28,7 @@ class MainWindow(QMainWindow):
     def on_radio1_btn_1(self, checked):
         if checked:
             print("button 1 clicked")
+
     def on_radio1_btn_2(self, checked):
         if checked:
             print("button 2 clicked")

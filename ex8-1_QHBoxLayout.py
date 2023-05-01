@@ -11,24 +11,23 @@ class MainWindow(QMainWindow):
 
     def init_ui(self):
         widget = QWidget()
-
         hbox = QHBoxLayout()
 
         label1 = QLabel('1')
         label1.setStyleSheet('background-color: #F23D3D; font-size: 20px; font-weight: bold;')
-        # label1.setAlignment(Qt.AlignCenter)
+        label1.setAlignment(Qt.AlignCenter)
 
         label2 = QLabel('2')
         label2.setStyleSheet('background-color: #A65526; font-size: 20px; font-weight: bold;')
-        # label2.setAlignment(Qt.AlignLeft)
+        label2.setAlignment(Qt.AlignLeft)
 
         label3 = QLabel('3')
         label3.setStyleSheet('background-color: #BF9B7A; font-size: 20px; font-weight: bold;')
-        # label3.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+        label3.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
 
         label4 = QLabel('4')
         label4.setStyleSheet('background-color: #F2BD1D; font-size: 20px; font-weight: bold;')
-        # label4.setAlignment(Qt.AlignBottom | Qt.AlignHCenter)
+        label4.setAlignment(Qt.AlignBottom | Qt.AlignHCenter)
 
         hbox.addWidget(label1)
         hbox.addWidget(label2)

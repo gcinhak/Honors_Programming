@@ -32,8 +32,9 @@ class MainWindow(QMainWindow):
 
         widget.setLayout(vbox)
 
-        self.setCentralWidget(widget)
         self.statusBar().showMessage('Developed by students in the IT-AI track')
+
+        self.setCentralWidget(widget)
         self.setGeometry(500, 500, 350, 200)
         self.setWindowTitle('QHBoxLayout')
 

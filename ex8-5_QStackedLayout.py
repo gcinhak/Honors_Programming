@@ -23,20 +23,20 @@ class MainWindow(QMainWindow):
         label4 = QLabel('label-4')
         label4.setStyleSheet('background-color: #FFF81E; font-size: 20px; font-weight: bold;')
 
-        self.btn = QPushButton('change layout')
-        self.btn.clicked.connect(self.on_clicked_btn)
+        btn = QPushButton('change layout')
+        btn.clicked.connect(self.on_clicked_btn)
 
         self.layout_stack.addWidget(label1)
         self.layout_stack.addWidget(label2)
         self.layout_stack.addWidget(label3)
         self.layout_stack.addWidget(label4)
-        # self.layout_stack.setCurrentIndex(0)
+        self.layout_stack.setCurrentIndex(0)
 
         vbox.addLayout(self.layout_stack)
-
-        vbox.addWidget(self.btn)
+        vbox.addWidget(btn)
 
         widget.setLayout(vbox)
+
         self.setCentralWidget(widget)
         self.setWindowTitle("QStacked Layout")
 

@@ -3,6 +3,7 @@
 import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication, QVBoxLayout, QWidget, QCheckBox
 
+
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()

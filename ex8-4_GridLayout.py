@@ -30,6 +30,7 @@ class MainWindow(QMainWindow):
         layout_grid.addWidget(label5, 0, 4)
 
         widget.setLayout(layout_grid)
+
         self.setCentralWidget(widget)
         self.setGeometry(300, 300, 500, 500)
         self.setWindowTitle("Grid Layout")
