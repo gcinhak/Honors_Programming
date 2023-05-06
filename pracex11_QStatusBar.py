@@ -36,7 +36,7 @@ class MainWindow(QMainWindow):
 
         self.setCentralWidget(widget)
         self.setGeometry(500, 500, 350, 200)
-        self.setWindowTitle('QHBoxLayout')
+        self.setWindowTitle('QStatusBar')
 
     def on_clicked_btn_clear(self):
         self.statusBar().clearMessage()
