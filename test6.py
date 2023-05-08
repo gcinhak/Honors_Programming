@@ -1,45 +1,57 @@
-from PyQt5.Qt import *
 import sys
+from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QPalette, QColor
+from PyQt5.QtCore import Qt
 
-app = QApplication(sys.argv)
 
-w = QWidget()
-w.setWindowTitle("QButtonGrounp")
-w.resize(300, 150)
+class MyWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setGeometry(100, 100, 400, 300)
 
-cs1 = QRadioButton("Beginner",w)
-cs1.move(130, 20)
+        tabs = QTabWidget()
+        tab1 = QWidget()
+        tab2 = QWidget()
+        tab3 = QWidget()
 
-cs2 = QRadioButton("Senior",w)
-cs2.move(130, 40)
+        tabs.addTab(tab1, "tab1")
+        tabs.addTab(tab2, "tab2")
+        tabs.addTab(tab3, "tab3")
 
-cs3 = QRadioButton("Expert",w)
-cs3.move(130, 60)
+        # tab1
+        label1 = QLabel("tab1 widget", tab1)
+        label11 = QLabel("tab111 widget", tab1)
+        label1.move(10, 10)
 
-cs4 = QRadioButton("Best",w)
-cs4.move(130, 80)
+        # tab2
+        label2 = QLabel("tab2 widget", tab2)
+        label2.move(10, 10)
 
-cs_group = QButtonGroup(w)
-cs_group.addButton(cs1)
-cs_group.addButton(cs2)
-cs_group.addButton(cs3)
-cs_group.addButton(cs4)
+        # tab3
+        label3 = QLabel("tab3 widget", tab3)
+        label3.move(10, 10)
 
-drs1 = QRadioButton("Python",w)
-drs1.move(20, 20)
+        self.setCentralWidget(tabs)
 
-drs2 = QRadioButton("Golang",w)
-drs2.move(20, 40)
 
-drs3 = QRadioButton("Java",w)
-drs3.move(20, 60)
-
-drs_group = QButtonGroup(w)
-drs_group.addButton(drs1)
-drs_group.addButton(drs2)
-drs_group.addButton(drs3)
-
-w.show()
-
-if __name__ == '__main__':
-    sys.exit(app.exec_())
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    # app.setStyle("Fusion")
+    # palette = QPalette()
+    # palette.setColor(QPalette.Window, QColor(53, 53, 53))
+    # palette.setColor(QPalette.WindowText, Qt.white)
+    # palette.setColor(QPalette.Base, QColor(25, 25, 25))
+    # palette.setColor(QPalette.AlternateBase, QColor(53, 53, 53))
+    # palette.setColor(QPalette.ToolTipBase, Qt.white)
+    # palette.setColor(QPalette.ToolTipText, Qt.white)
+    # palette.setColor(QPalette.Text, Qt.white)
+    # palette.setColor(QPalette.Button, QColor(53, 53, 53))
+    # palette.setColor(QPalette.ButtonText, Qt.white)
+    # palette.setColor(QPalette.BrightText, Qt.red)
+    # palette.setColor(QPalette.Link, QColor(42, 130, 218))
+    # palette.setColor(QPalette.Highlight, QColor(42, 130, 218))
+    # palette.setColor(QPalette.HighlightedText, Qt.black)
+    # app.setPalette(palette)
+    win = MyWindow()
+    win.show()
+    app.exec_()

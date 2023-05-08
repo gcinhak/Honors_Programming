@@ -1,4 +1,4 @@
-### Example13. QRadioButton2 ###
+### Example13. QCheckBox2 ###
 
 import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication, QVBoxLayout, QWidget, QCheckBox
@@ -17,19 +17,20 @@ class MainWindow(QMainWindow):
         self.checkbox_2.setTristate(True)
         self.checkbox_3.setTristate(True)
 
+        # connect the signal to the slot
         self.checkbox_1.clicked.connect(self.on_clicked_checkbox_1)
         self.checkbox_2.toggled.connect(self.on_toggled_checkbox_2)
         self.checkbox_3.stateChanged.connect(self.on_stateChanged_checkbox_3)
 
+        #레이아웃 설정
         vbox = QVBoxLayout()
         vbox.addWidget(self.checkbox_1)
         vbox.addWidget(self.checkbox_2)
         vbox.addWidget(self.checkbox_3)
 
+        # 윈도우 설정
         widget = QWidget()
         widget.setLayout(vbox)
-
-        # 윈도우 설정
         self.setCentralWidget(widget)
         self.setGeometry(300, 300, 300, 100)
         self.setWindowTitle("CheckBox")
