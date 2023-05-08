@@ -13,9 +13,9 @@ class MainWindow(QMainWindow):
         self.init_ui()
 
     def init_ui(self):
-        self.radio_btn_1 = QRadioButton('1', self)
-        self.radio_btn_2 = QRadioButton('2', self)
-        self.radio_btn_3 = QRadioButton('3', self)
+        self.radio_btn_1 = QRadioButton('1')
+        self.radio_btn_2 = QRadioButton('2')
+        self.radio_btn_3 = QRadioButton('3')
         self.btn_up = QPushButton('Up')
         self.btn_up.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         self.btn_up.clicked.connect(self.on_btn_up)

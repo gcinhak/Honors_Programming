@@ -3,7 +3,6 @@
 import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication, QVBoxLayout, QWidget, QCheckBox
 
-
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -19,10 +18,9 @@ class MainWindow(QMainWindow):
         vbox.addWidget(self.checkbox_2)
         vbox.addWidget(self.checkbox_3)
 
+        # 윈도우 설정
         widget = QWidget()
         widget.setLayout(vbox)
-
-        # 윈도우 설정
         self.setCentralWidget(widget)
         self.setGeometry(300, 300, 300, 100)
         self.setWindowTitle("CheckBox")
