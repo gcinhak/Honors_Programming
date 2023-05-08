@@ -1,4 +1,4 @@
-### Example14. QButtonGroup3 ###
+### Example14. QButtonGroup1 ###
 
 import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication, QButtonGroup, QRadioButton, QVBoxLayout, QHBoxLayout, QWidget
