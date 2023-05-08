@@ -1,4 +1,4 @@
-### Example13. QRadioButton1 ###
+### Example13. QCheckBox1 ###
 
 import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication, QVBoxLayout, QWidget, QCheckBox
@@ -13,6 +13,7 @@ class MainWindow(QMainWindow):
         self.checkbox_2 = QCheckBox("CheckBox 2")
         self.checkbox_3 = QCheckBox("CheckBox 3")
 
+        #레이아웃 설정
         vbox = QVBoxLayout()
         vbox.addWidget(self.checkbox_1)
         vbox.addWidget(self.checkbox_2)
