@@ -1,7 +1,7 @@
-### Example11. QRadioButton ###
+### Example14. QButtonGroup1 ###
 
 import sys
-from PyQt5.QtWidgets import QMainWindow, QApplication, QButtonGroup, QRadioButton, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QMainWindow, QApplication, QButtonGroup, QRadioButton, QVBoxLayout, QHBoxLayout, QWidget
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -9,30 +9,48 @@ class MainWindow(QMainWindow):
         self.init_ui()
 
     def init_ui(self):
-        self.radio_btn_1 = QRadioButton('First Button', self)
-        self.radio_btn_2 = QRadioButton('Second Button', self)
+        t_btn1 = QRadioButton("IT-AI")
+        t_btn2 = QRadioButton("BIO")
+        t_btn3 = QRadioButton("Design")
+        t_btn4 = QRadioButton("sports")
 
-        self.btnGroup = QButtonGroup()
-        self.btnGroup.addButton(self.radio_btn_1)
-        self.btnGroup.addButton(self.radio_btn_2)
-        # self.btnGroup.setExclusive(False)
-        self.btnGroup.buttonClicked.connect(self.fnc_radio)
+        self.t_btn_group = QButtonGroup()
+        self.t_btn_group.addButton(t_btn1, 1)
+        self.t_btn_group.addButton(t_btn2, 2)
+        self.t_btn_group.addButton(t_btn3, 3)
+        self.t_btn_group.addButton(t_btn4, 4)
+        print(self.t_btn_group.id(t_btn1))
 
-        self.vbox = QVBoxLayout()
-        self.vbox.addWidget(self.radio_btn_1)
-        self.vbox.addWidget(self.radio_btn_2)
+        g_btn1 = QRadioButton("10th")
+        g_btn2 = QRadioButton("11th")
+        g_btn3 = QRadioButton("12th")
 
-        widget = QWidget()
-        widget.setLayout(self.vbox)
+        self.g_btn_group = QButtonGroup()
+        self.g_btn_group.addButton(g_btn1, 1)
+        self.g_btn_group.addButton(g_btn2, 2)
+        self.g_btn_group.addButton(g_btn3, 3)
+        print(self.g_btn_group.id(g_btn1))
+
+        #레이아웃 설정
+        hbox = QHBoxLayout()
+        vbox1 = QVBoxLayout()
+        vbox2 = QVBoxLayout()
+        vbox1.addWidget(t_btn1)
+        vbox1.addWidget(t_btn2)
+        vbox1.addWidget(t_btn3)
+        vbox1.addWidget(t_btn4)
+        vbox2.addWidget(g_btn1)
+        vbox2.addWidget(g_btn2)
+        vbox2.addWidget(g_btn3)
+        hbox.addLayout(vbox1)
+        hbox.addLayout(vbox2)
 
         # 윈도우 설정
+        widget= QWidget()
+        widget.setLayout(hbox)
         self.setCentralWidget(widget)
         self.setGeometry(300, 300, 300, 100)
         self.setWindowTitle("GButtonGroup")
-
-    # ===============================  Slot 부분   =========================================
-    def fnc_radio(self, button):
-        print(button.text(),'toggled')
 
 if __name__ == '__main__':
     app = QApplication([])

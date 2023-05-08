@@ -1,4 +1,4 @@
-### Example13. QRadioButton ###
+### Example13. QRadioButton2 ###
 
 import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication, QVBoxLayout, QWidget, QCheckBox
