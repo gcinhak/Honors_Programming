@@ -12,16 +12,17 @@ class MainWindow(QMainWindow):
         self.init_ui()
 
     def init_ui(self):
-        self.label1 = QLabel()
-        self.label1.setStyleSheet("border-style: solid; border-width: 1px; font-size: 22px; background-color: #FFFFFF;")
-        self.label1.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
-        self.label1.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        self.label1.setFixedHeight(50)
-        self.label2 = QLabel()
-        self.label2.setStyleSheet("border-style: solid; border-width: 1px; font-size: 22px; background-color: #FFFFFF;")
-        self.label2.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
-        self.label2.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        self.label2.setFixedHeight(50)
+        self.label_equation = QLabel()
+        self.label_equation.setStyleSheet("border-style: solid; border-width: 1px; font-size: 18px; background-color: #FBFBFB; border-radius: 7%; border-color: #BDBDBD;")
+        self.label_equation.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+        self.label_equation.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.label_equation.setFixedHeight(40)
+
+        self.label_solution = QLabel()
+        self.label_solution.setStyleSheet("border-style: solid; border-width: 1px; font-size: 26px; background-color: #FBFBFB; border-radius: 7%; border-color: #BDBDBD; font-weight: 400;")
+        self.label_solution.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+        self.label_solution.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        self.label_solution.setFixedHeight(50)
 
         self.btn_list = []
         for number in range(10):
@@ -48,8 +49,8 @@ class MainWindow(QMainWindow):
         self.btn_empty.setEnabled(False)
 
         vbox = QVBoxLayout()
-        vbox.addWidget(self.label1)
-        vbox.addWidget(self.label2)
+        vbox.addWidget(self.label_equation)
+        vbox.addWidget(self.label_solution)
 
         grid_layout = QGridLayout()
         grid_layout.addWidget(self.btn_clear,0,0,1,1)
@@ -79,33 +80,42 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(widget)
         self.setGeometry(500, 500, 400, 500)
         self.setWindowTitle('Calculator')
-        self.statusBar().showMessage('Developed by Teacher')
+        self.statusBar().showMessage('Developed by GVCSMG')
 
     def on_clicked_number_btn(self):
+        if self.label_solution.text():
+            self.label_equation.clear()
+            self.label_solution.clear()
+
         sender = self.sender()
         number = sender.text()
-        self.label2.setText(self.label2.text()+number)
+        self.label_equation.setText(self.label_equation.text()+number)
 
     def on_clicked_operation_btn(self):
         sender = self.sender()
         operation = sender.text()
         if operation in ["+","-","/","*","."]:
-            if self.label2.text() and self.label2.text()[-1] not in ["+","-","/","*","."]:
-                self.label2.setText(self.label2.text() + operation)
+            if self.label_equation.text() and self.label_equation.text()[-1] not in ["+","-","/","*","."]:
+                self.label_equation.setText(self.label_equation.text() + operation)
+            if self.label_solution.text():
+                self.label_equation.setText(self.label_solution.text() + operation)
+                self.label_solution.clear()
         elif operation == "inhak":
-            self.label1.setText("Hello World!!")
+            self.label_solution.setText("Hello World!!")
         elif operation == "=":
-            try:
-                self.label1.setText(str(eval(self.label2.text())))
-                self.label2.clear()
-            except:
-                QMessageBox.warning(self, "Close", "계산할 수 없습니다.")
+            if self.label_equation.text():
+                try:
+                    self.label_solution.setText(str(format(eval(self.label_equation.text().replace(",","")),",")))
+                    self.label_equation.setText(self.label_equation.text() + '=')
+                except:
+                    QMessageBox.warning(self, "Close", "계산할 수 없습니다.")
 
     def on_clicked_del_btn(self):
-        self.label2.setText(self.label2.text()[:-1])
+        if not self.label_solution.text():
+            self.label_equation.setText(self.label_equation.text()[:-1])
 
     def on_clicked_clear_btn(self):
-        self.label2.clear()
+        self.label_equation.clear()
 
 if __name__ == '__main__':
     app = QApplication([])
