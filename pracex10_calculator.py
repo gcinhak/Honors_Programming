@@ -16,16 +16,18 @@ class MainWindow(QMainWindow):
         # Label 생성
         self.label_equation = QLabel()
         self.label_equation.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
+        print(Qt.AlignRight)
+        print(Qt.AlignVCenter)
+        print(Qt.AlignRight | Qt.AlignVCenter)
         self.label_equation.setStyleSheet("""border-style: solid; border-width: 1px; 
                                           font-size: 18px; background-color: #FBFBFB;
-                                          border-radius: 7%; border-color: #BDBDBD;""")
-
+                                          border-radius: 7%; border-color: #BCBCBC;""")
 
         self.label_solution = QLabel()
         self.label_solution.setAlignment(Qt.AlignRight | Qt.AlignVCenter)
         self.label_solution.setStyleSheet("""border-style: solid; border-width: 1px;
                                           font-size: 26px; background-color: #FBFBFB;
-                                          border-radius: 7%; border-color: #BDBDBD;
+                                          border-radius: 7%; border-color: #BCBCBC;
                                           font-weight: 400;""")
         # 숫자 버튼 생성
         self.btn_list = []
@@ -88,13 +90,13 @@ class MainWindow(QMainWindow):
         vbox = QVBoxLayout()
         vbox.addWidget(self.label_equation, stretch = 2)
         vbox.addWidget(self.label_solution, stretch = 3)
-        vbox.addLayout(grid_layout, stretch = 10)
+        vbox.addLayout(grid_layout, stretch = 12)
 
         ### 윈도우 설정 ###
         widget = QWidget()
         widget.setLayout(vbox)
         self.setCentralWidget(widget)
-        self.setGeometry(800, 200, 400, 600)
+        self.setGeometry(800, 200, 350, 550)
         self.setWindowTitle('Calculator')
         self.statusBar().showMessage('Developed by GVCSMG')
 
@@ -116,14 +118,14 @@ class MainWindow(QMainWindow):
         if operation in ["+","-","/","*","."]:
             if self.label_equation.text() and self.label_equation.text()[-1] in "0123456789":
                 self.label_equation.setText(self.label_equation.text() + operation)
-            if self.label_solution.text():
+            if self.label_solution.text() and self.label_solution.text()[-1] in "0123456789":
                 self.label_equation.setText(self.label_solution.text() + operation)
                 self.label_solution.clear()
         elif operation == "inhak":
             self.label_equation.clear()
             self.label_solution.setText("Hello World!!")
         elif operation == "=":
-            if self.label_equation.text():
+            if self.label_equation.text() and self.label_equation.text()[-1] in "=":
                 try:
                     self.label_solution.setText(str(format(eval(self.label_equation.text().replace(",","")),",")))
                     self.label_equation.setText(self.label_equation.text() + '=')
