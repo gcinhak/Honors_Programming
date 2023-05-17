@@ -9,7 +9,5 @@ label = QLabel("Hello World")
 label.show()
 
 print("Before event loop")
-
 sys.exit(app.exec_())
-
 print("After event loop")

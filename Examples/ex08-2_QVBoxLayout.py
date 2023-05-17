@@ -11,7 +11,7 @@ class MainWindow(QMainWindow):
 
     def init_ui(self):
         widget = QWidget()
-        vBox = QVBoxLayout()
+        vbox = QVBoxLayout()
 
         label1 = QLabel('1')
         label1.setStyleSheet('background-color: #F288D6; font-size: 20px; font-weight: bold;')
@@ -29,13 +29,13 @@ class MainWindow(QMainWindow):
         label4.setStyleSheet('background-color: #F2BD1D; font-size: 20px; font-weight: bold;')
         label4.setAlignment(Qt.AlignBottom | Qt.AlignHCenter)
 
-        vBox.addWidget(label1)
-        vBox.addWidget(label2)
-        vBox.addWidget(label3)
-        vBox.addWidget(label4)
+        vbox.addWidget(label1)
+        vbox.addWidget(label2)
+        vbox.addWidget(label3)
+        vbox.addWidget(label4)
 
         # QWidget 객체에 레이아웃은 하나의 레이아웃만 가짐
-        widget.setLayout(vBox)
+        widget.setLayout(vbox)
 
         self.setCentralWidget(widget)
         self.setGeometry(300, 300, 200, 300)

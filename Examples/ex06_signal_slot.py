@@ -1,4 +1,4 @@
-### Example6 ###
+### Example6 - Slonal, Slot ###
 
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QPushButton
@@ -14,16 +14,26 @@ class MainWindow(QMainWindow):
 
         # QPushButton 생성
         btn = QPushButton('Click me', widget)
+        # btn.setCheckable(True)
 
         # Signal 생성 pressed(), released()
-        btn.clicked.connect(self.on_btn)
+        btn.clicked.connect(self.on_btn_clicked)
+        btn.pressed.connect(self.on_btn_pressed)
+        btn.released.connect(self.on_btn_released)
+        btn.toggled.connect(self.on_btn_toggled)
 
         # widget를 QMainWindow의 central widget으로 설정
         self.setCentralWidget(widget)
 
     #Slot 생성
-    def on_btn(self):
-        print('Hello World!')
+    def on_btn_clicked(self):
+        print('on_btn_clicked')
+    def on_btn_pressed(self):
+        print('on_btn_pressed')
+    def on_btn_released(self):
+        print('on_btn_released')
+    def on_btn_toggled(self):
+        print('on_btn_toggled')
 
 if __name__ == '__main__':
     app = QApplication([])

@@ -123,7 +123,7 @@ class MainWindow(QMainWindow):
             self.label_equation.clear()
             self.label_solution.setText("Hello World!!")
         elif operation == "=":
-            if self.label_equation.text() and self.label_equation.text()[-1] != "=":
+            if self.label_equation.text() and self.label_solution.text()[-1] != "=":
                 try:
                     self.label_solution.setText(str(format(eval(self.label_equation.text().replace(",","")),",")))
                     self.label_equation.setText(self.label_equation.text() + '=')

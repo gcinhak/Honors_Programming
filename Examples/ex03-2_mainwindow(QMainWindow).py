@@ -9,8 +9,9 @@ window = QMainWindow()
 
 widget = QWidget()
 
-label = QLabel(parent=widget)
+label = QLabel()
 label.setText("Hello World")
+label.setParent(widget)
 
 window.setCentralWidget(widget)
 
