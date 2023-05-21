@@ -14,7 +14,8 @@ class MainWindow(QMainWindow):
 
         # QPushButton 생성
         btn = QPushButton('Click me', widget)
-        # btn.setCheckable(True)
+        btn.resize(100,100)
+        btn.setCheckable(True)
 
         # Signal 생성 pressed(), released()
         btn.clicked.connect(self.on_btn_clicked)
@@ -28,10 +29,13 @@ class MainWindow(QMainWindow):
     #Slot 생성
     def on_btn_clicked(self):
         print('on_btn_clicked')
+
     def on_btn_pressed(self):
         print('on_btn_pressed')
+
     def on_btn_released(self):
         print('on_btn_released')
+
     def on_btn_toggled(self):
         print('on_btn_toggled')
 
