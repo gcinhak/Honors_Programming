@@ -53,8 +53,8 @@ class MainWindow(QMainWindow):
         self.h_btn_group.addButton(h_btn2, 2)
 
         # connect the signal to the slot
-        # self.t_btn_group.buttonClicked.connect(self.on_clicked_t_btn)
-        # self.g_btn_group.buttonClicked.connect(self.on_clicked_g_btn)
+        self.t_btn_group.buttonClicked.connect(self.on_clicked_t_btn)
+        self.g_btn_group.buttonClicked.connect(self.on_clicked_g_btn)
 
         #레이아웃 설정
         hbox = QVBoxLayout()
@@ -90,13 +90,12 @@ class MainWindow(QMainWindow):
         self.setGeometry(300, 300, 300, 100)
         self.setWindowTitle("GButtonGroup")
 
-        print("베이직 샐러드, 발사믹, 아메리카노, ICED")
-    # def on_clicked_t_btn(self):
-    #     print("Button Label is", self.t_btn_group.checkedButton().text(), \
-    #           ", id is:", self.t_btn_group.id(self.t_btn_group.checkedButton()))
-    #
-    # def on_clicked_g_btn(self, obj):
-    #     print("Button Label is", obj.text(), ", id is:", self.g_btn_group.id(obj))
+    def on_clicked_t_btn(self):
+        print("Button Label is", self.t_btn_group.checkedButton().text(), \
+              ", id is:", self.t_btn_group.id(self.t_btn_group.checkedButton()))
+
+    def on_clicked_g_btn(self, obj):
+        print("Button Label is", obj.text(), ", id is:", self.g_btn_group.id(obj))
 
 
 
