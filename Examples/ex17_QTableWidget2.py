@@ -11,17 +11,22 @@ class MyWindow(QMainWindow):
         self.tableWidget = QTableWidget()
         self.tableWidget.setColumnCount(2)
         self.tableWidget.setRowCount(5)
-        self.btn = QPushButton("행 추가")
+        self.btn = QPushButton("실행")
         self.btn.clicked.connect(self.on_btn)
 
-        labels_horizontal_header = ["종목명", "종목코드"]
+        labels_horizontal_header = ["과목", "성적"]
         self.tableWidget.setHorizontalHeaderLabels(labels_horizontal_header)
 
-        self.tableWidget.setItem(0, 0, QTableWidgetItem("(0,0)"))
-        self.tableWidget.setItem(0, 1, QTableWidgetItem("(0,1)"))
+        self.tableWidget.setItem(0, 0, QTableWidgetItem("국어"))
+        self.tableWidget.setItem(1, 0, QTableWidgetItem("영어"))
+        self.tableWidget.setItem(2, 0, QTableWidgetItem("수학"))
+        self.tableWidget.setItem(3, 0, QTableWidgetItem("과학"))
 
-        self.tableWidget.setItem(1, 0, QTableWidgetItem("(1,0)"))
-        self.tableWidget.setItem(1, 1, QTableWidgetItem("(1,1)"))
+        self.tableWidget.setItem(0, 1, QTableWidgetItem("100"))
+        self.tableWidget.setItem(1, 1, QTableWidgetItem("90"))
+        self.tableWidget.setItem(2, 1, QTableWidgetItem("80"))
+        self.tableWidget.setItem(3, 1, QTableWidgetItem("50"))
+
 
         vbox = QVBoxLayout()
         vbox.addWidget(self.tableWidget)
@@ -38,12 +43,23 @@ class MyWindow(QMainWindow):
         # print(self.tableWidget.currentRow())
         # self.tableWidget.setCurrentCell(1,1)
         # self.tableWidget.setCurrentItem(QTableWidgetItem("(100,100)"))
-        print(self.tableWidget.selectedRanges().bottomRow())
-        print(self.tableWidget.selectedRanges().columnCount())
-        print(self.tableWidget.selectedRanges().leftColumn())
-        print(self.tableWidget.selectedRanges().rightColumn())
-        print(self.tableWidget.selectedRanges().rowCount())
-        print(self.tableWidget.selectedRanges().topRow())
+        # for i in self.tableWidget.selectedItems():
+        #     print(i.text())
+        # for i in self.tableWidget.selectedRanges():
+        #     print(i.bottomRow())
+        #     print(i.columnCount())
+        #     print(i.leftColumn())
+        #     print(i.rightColumn())
+        #     print(i.rowCount())
+        #     print(i.topRow())
+        # print(self.tableWidget.rowCount())
+        # print(self.tableWidget.currentRow())
+        # print(self.tableWidget.selectedItems())
+        result = 0
+        for i in self.tableWidget.selectedItems():
+            result += int(i.text())
+            # print(i.text())
+        print(result)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
