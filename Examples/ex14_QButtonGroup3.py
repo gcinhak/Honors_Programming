@@ -54,7 +54,8 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("GButtonGroup")
 
     def on_btn_track_clicked(self):
-        print("Button Label is", self.btn_group_track.checkedButton().text(), ", id is:", self.btn_group_track.id(self.btn_group_track.checkedButton()))
+        print("Button Label is", self.btn_group_track.checkedButton().text(),
+              ", id is:", self.btn_group_track.id(self.btn_group_track.checkedButton()))
 
     def on_btn_grade_clicked(self, obj):
         print("Button Label is", obj.text(), ", id is:", self.btn_group_grade.id(obj))

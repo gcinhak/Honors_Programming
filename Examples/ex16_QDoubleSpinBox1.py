@@ -5,9 +5,9 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWid
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.initUI()
+        self.init_ui()
 
-    def initUI(self):
+    def init_ui(self):
         self.dspinbox = QDoubleSpinBox()
         self.dspinbox.setRange(0.0, 5.5)
         self.dspinbox.setSingleStep(0.5)

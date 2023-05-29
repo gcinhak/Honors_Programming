@@ -1,5 +1,4 @@
-### Example14. QButtonGroup2 ###
-
+### Example14. QButtonGroup3 ###
 import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication, QButtonGroup, QRadioButton, QVBoxLayout, QHBoxLayout, QWidget
 
@@ -12,25 +11,26 @@ class MainWindow(QMainWindow):
         btn_itai = QRadioButton("IT-AI")
         btn_bio = QRadioButton("BIO")
         btn_design = QRadioButton("Design")
-        btn_sports = QRadioButton("sports")
+        btn_sports = QRadioButton("Sports")
 
         self.btn_group_track = QButtonGroup()
         self.btn_group_track.addButton(btn_itai, 1)
         self.btn_group_track.addButton(btn_bio, 2)
         self.btn_group_track.addButton(btn_design, 3)
         self.btn_group_track.addButton(btn_sports, 4)
-        # self.btn_group_track.setExclusive(False) # 여러 버튼 선택 가능 하도록
-        # self.btn_group_track.removeButton(btn_itai)
-        # self.btn_group_track.removeButton(btn_bio)
 
         btn_10 = QRadioButton("10th")
         btn_11 = QRadioButton("11th")
         btn_12 = QRadioButton("12th")
 
         self.btn_group_grade = QButtonGroup()
-        self.btn_group_grade.addButton(btn_10, 1)
-        self.btn_group_grade.addButton(btn_11, 2)
-        self.btn_group_grade.addButton(btn_12, 3)
+        self.btn_group_grade.addButton(btn_10) # id: -2
+        self.btn_group_grade.addButton(btn_11) # id: -3
+        self.btn_group_grade.addButton(btn_12) # id: -4
+
+        # connect the signal to the slot
+        self.btn_group_track.idClicked.connect(self.on_btn_track_clicked)
+        self.btn_group_grade.buttonClicked.connect(self.on_btn_grade_clicked)
 
         #레이아웃 설정
         hbox = QHBoxLayout()
@@ -52,6 +52,12 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(widget)
         self.setGeometry(300, 300, 300, 100)
         self.setWindowTitle("GButtonGroup")
+
+    def on_btn_track_clicked(self, num):
+        print("Button Label is", self.btn_group_track.button(num).text(), ", id is:", num)
+
+    def on_btn_grade_clicked(self, obj):
+        print("Button Label is", obj.text(), ", id is:", self.btn_group_grade.id(obj))
 
 if __name__ == '__main__':
     app = QApplication([])

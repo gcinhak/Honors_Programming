@@ -4,9 +4,9 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QSpinBox, QVBoxLa
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.initUI()
+        self.init_ui()
 
-    def initUI(self):
+    def init_ui(self):
         self.spinbox = QSpinBox()
         self.spinbox.setRange(-25, 25)
         # self.spinbox.setMinimum(-25)
