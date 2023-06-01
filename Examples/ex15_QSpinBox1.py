@@ -20,9 +20,10 @@ class MainWindow(QMainWindow):
         self.setGeometry(300, 300, 300, 100)
         self.setWindowTitle("QSpinBox")
 
-    def on_spinbox_valuechanged(self):
+    def on_spinbox_valuechanged(self,val):
         value = self.spinbox.value()
         print(type(value), value)
+        print(type(val), val)
 
 if __name__ == '__main__':
     app = QApplication([])

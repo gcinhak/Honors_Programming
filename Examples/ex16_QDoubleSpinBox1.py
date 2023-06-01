@@ -10,10 +10,10 @@ class MainWindow(QMainWindow):
     def init_ui(self):
         self.dspinbox = QDoubleSpinBox()
         self.dspinbox.setRange(0.0, 5.5)
-        self.dspinbox.setSingleStep(0.5)
+        self.dspinbox.setSingleStep(0.25)
         self.dspinbox.setPrefix('$ ')
-        self.dspinbox.setDecimals(1)
-        self.dspinbox.setReadOnly(True)
+        self.dspinbox.setDecimals(2)
+        # self.dspinbox.setReadOnly(True)
         self.lbl = QLabel('$ 0.0')
         self.dspinbox.valueChanged.connect(self.on_spinbox_valuechanged)
 
