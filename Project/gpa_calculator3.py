@@ -1,5 +1,6 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QLabel, QGridLayout, QLineEdit, QPushButton, QRadioButton
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QLabel, QLineEdit, QPushButton, QRadioButton, \
+    QVBoxLayout, QHBoxLayout
 
 
 class MainWindow(QMainWindow):
@@ -25,21 +26,32 @@ class MainWindow(QMainWindow):
 
         # GPA 계산 버튼 생성
         btn_cal = QPushButton("GPA 계산")
+
+        # btn_cal의 clicked 시그널에 대한 slot 연결
         btn_cal.clicked.connect(self.on_btn_cal_clicked)
 
         ### layout 생성 ###
-        grid_input = QGridLayout()
-        for i in range(5):
-            grid_input.addWidget(self.gp_list[i], i, 0)
-            grid_input.addWidget(self.cd_list[i], i, 1)
+        vbox_main = QVBoxLayout()
+        vbox_gp = QVBoxLayout()
+        vbox_cd = QVBoxLayout()
+        hbox_grade = QHBoxLayout()
+        hbox_radio = QHBoxLayout()
 
-        grid_input.addWidget(self.lb_gpa, 5, 0, 1, 2)
-        grid_input.addWidget(self.radio_wgpa, 6, 0)
-        grid_input.addWidget(self.radio_unwgpa, 6, 1)
-        grid_input.addWidget(btn_cal, 7, 0, 1, 2)
+        for i in range(5):
+            vbox_gp.addWidget(self.gp_list[i])
+            vbox_cd.addWidget(self.cd_list[i])
+
+        hbox_grade.addLayout(vbox_gp)
+        hbox_grade.addLayout(vbox_cd)
+        hbox_radio.addWidget(self.radio_wgpa)
+        hbox_radio.addWidget(self.radio_unwgpa)
+        vbox_main.addLayout(hbox_grade)
+        vbox_main.addLayout(hbox_radio)
+        vbox_main.addWidget(self.lb_gpa)
+        vbox_main.addWidget(btn_cal)
 
         widget = QWidget()
-        widget.setLayout(grid_input)
+        widget.setLayout(vbox_main)
         self.setCentralWidget(widget)
 
     def on_btn_cal_clicked(self):
