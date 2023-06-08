@@ -9,11 +9,11 @@ class MainWindow(QMainWindow):
         self.init_ui()
 
     def init_ui(self):
-        self.tableWidget = QTableWidget(self)
-        self.tableWidget.setRowCount(3)
-        self.tableWidget.setColumnCount(2)
-        self.tableWidget.setHorizontalHeaderLabels(["1열", "2열"])
-        self.tableWidget.setVerticalHeaderLabels(["1행", "2행", "3행"])
+        self.table_widget = QTableWidget(self)
+        self.table_widget.setRowCount(3)
+        self.table_widget.setColumnCount(2)
+        self.table_widget.setHorizontalHeaderLabels(["1열", "2열"])
+        self.table_widget.setVerticalHeaderLabels(["1행", "2행", "3행"])
 
         self.btn_add_row = QPushButton("행 추가")
         self.btn_add_col = QPushButton("열 추가")
@@ -31,15 +31,15 @@ class MainWindow(QMainWindow):
         self.btn_clear_contents.clicked.connect(self.on_btn_clear_contents_clicked)
         self.btn_clear.clicked.connect(self.on_btn_clear_clicked)
 
-        self.tableWidget.setItem(0, 0, QTableWidgetItem("0"))
-        self.tableWidget.setItem(0, 1, QTableWidgetItem("1"))
-        self.tableWidget.setItem(1, 0, QTableWidgetItem("2"))
-        self.tableWidget.setItem(1, 1, QTableWidgetItem("3"))
-        self.tableWidget.setItem(2, 0, QTableWidgetItem("4"))
-        self.tableWidget.setItem(2, 1, QTableWidgetItem("5"))
+        self.table_widget.setItem(0, 0, QTableWidgetItem("0"))
+        self.table_widget.setItem(0, 1, QTableWidgetItem("1"))
+        self.table_widget.setItem(1, 0, QTableWidgetItem("2"))
+        self.table_widget.setItem(1, 1, QTableWidgetItem("3"))
+        self.table_widget.setItem(2, 0, QTableWidgetItem("4"))
+        self.table_widget.setItem(2, 1, QTableWidgetItem("5"))
 
         vbox = QVBoxLayout()
-        vbox.addWidget(self.tableWidget)
+        vbox.addWidget(self.table_widget)
         hbox_row = QHBoxLayout()
         hbox_row.addWidget(self.btn_add_row)
         hbox_row.addWidget(self.btn_del_row)
@@ -60,19 +60,19 @@ class MainWindow(QMainWindow):
         self.setGeometry(1000, 1000, 600, 600)
 
     def on_btn_add_row_clicked(self):
-        self.tableWidget.insertRow(self.tableWidget.rowCount())
+        self.table_widget.insertRow(self.table_widget.rowCount())
     def on_btn_add_col_clicked(self):
-        self.tableWidget.insertColumn(self.tableWidget.columnCount())
+        self.table_widget.insertColumn(self.table_widget.columnCount())
     def on_btn_del_row_clicked(self):
-        self.tableWidget.removeRow(self.tableWidget.rowCount()-1)
+        self.table_widget.removeRow(self.table_widget.rowCount()-1)
     def on_btn_del_col_clicked(self):
-        self.tableWidget.removeColumn(self.tableWidget.columnCount()-1)
+        self.table_widget.removeColumn(self.table_widget.columnCount()-1)
     def on_btn_del_clicked(self):
-        self.tableWidget.takeItem(self.tableWidget.currentRow(), self.tableWidget.currentColumn())
+        self.table_widget.takeItem(self.table_widget.currentRow(), self.table_widget.currentColumn())
     def on_btn_clear_clicked(self):
-        self.tableWidget.clear()
+        self.table_widget.clear()
     def on_btn_clear_contents_clicked(self):
-        self.tableWidget.clearContents()
+        self.table_widget.clearContents()
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

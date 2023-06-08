@@ -8,22 +8,22 @@ class MainWindow(QMainWindow):
         self.init_ui()
 
     def init_ui(self):
-        self.tableWidget = QTableWidget(self)
-        self.tableWidget.setRowCount(3)
-        self.tableWidget.setColumnCount(2)
+        self.table_widget = QTableWidget(self)
+        self.table_widget.setRowCount(3)
+        self.table_widget.setColumnCount(2)
         self.btn = QPushButton("click")
         self.btn.setStyleSheet("font-size:28px;")
         self.btn.clicked.connect(self.on_btn_clicked)
 
-        self.tableWidget.setItem(0, 0, QTableWidgetItem("0"))
-        self.tableWidget.setItem(0, 1, QTableWidgetItem("1"))
-        self.tableWidget.setItem(1, 0, QTableWidgetItem("2"))
-        self.tableWidget.setItem(1, 1, QTableWidgetItem("3"))
-        self.tableWidget.setItem(2, 0, QTableWidgetItem("4"))
-        self.tableWidget.setItem(2, 1, QTableWidgetItem("5"))
+        self.table_widget.setItem(0, 0, QTableWidgetItem("0"))
+        self.table_widget.setItem(0, 1, QTableWidgetItem("1"))
+        self.table_widget.setItem(1, 0, QTableWidgetItem("2"))
+        self.table_widget.setItem(1, 1, QTableWidgetItem("3"))
+        self.table_widget.setItem(2, 0, QTableWidgetItem("4"))
+        self.table_widget.setItem(2, 1, QTableWidgetItem("5"))
 
         vbox = QVBoxLayout()
-        vbox.addWidget(self.tableWidget)
+        vbox.addWidget(self.table_widget)
         vbox.addWidget(self.btn)
 
         widget = QWidget()
@@ -32,19 +32,19 @@ class MainWindow(QMainWindow):
         self.setGeometry(1000, 1000, 500, 400)
 
     def on_btn_clicked(self):
-        print("rowCount():{} columnCount():{}".format(self.tableWidget.rowCount(), self.tableWidget.columnCount()))
-        print("currentRow():{} currentColumn():{}".format(self.tableWidget.currentRow(), self.tableWidget.currentColumn()))
+        print("rowCount():{} columnCount():{}".format(self.table_widget.rowCount(), self.table_widget.columnCount()))
+        print("currentRow():{} currentColumn():{}".format(self.table_widget.currentRow(), self.table_widget.currentColumn()))
         print("--------------------------------")
-        print("item(0,0):{} item(1,1):{}".format(self.tableWidget.item(0,0).text(), self.tableWidget.item(1,1).text()))
-        print("currentItem():{}".format(self.tableWidget.currentItem().text()))
+        print("item(0,0):{} item(1,1):{}".format(self.table_widget.item(0,0).text(), self.table_widget.item(1,1).text()))
+        print("currentItem():{}".format(self.table_widget.currentItem().text()))
         print("--------------------------------")
-        for item_obj in self.tableWidget.selectedItems():
-            if self.tableWidget.selectedItems()[0] == item_obj:
+        for item_obj in self.table_widget.selectedItems():
+            if self.table_widget.selectedItems()[0] == item_obj:
                 print("selectedItems():{}".format(item_obj.text()), end=" ")
             else:
                 print("{}".format(item_obj.text()), end=" ")
         print("\n--------------------------------")
-        for item_range in self.tableWidget.selectedRanges():
+        for item_range in self.table_widget.selectedRanges():
             print("rowCount():{} columnCount():{}\ntopRow():{} bottomRow():{}\nleftColumn():{} rightColumn(): {}".format
                   (item_range.rowCount(), item_range.columnCount(), item_range.topRow(), item_range.bottomRow(),
                    item_range.leftColumn(), item_range.rightColumn()))

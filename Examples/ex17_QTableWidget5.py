@@ -8,28 +8,28 @@ class MainWindow(QMainWindow):
         self.init_ui()
 
     def init_ui(self):
-        self.tableWidget = QTableWidget(self)
-        self.tableWidget.setRowCount(3)
-        self.tableWidget.setColumnCount(2)
+        self.table_widget = QTableWidget(self)
+        self.table_widget.setRowCount(3)
+        self.table_widget.setColumnCount(2)
 
-        self.tableWidget.setItem(0, 0, QTableWidgetItem("0"))
-        self.tableWidget.setItem(0, 1, QTableWidgetItem("1"))
-        self.tableWidget.setItem(1, 0, QTableWidgetItem("2"))
-        self.tableWidget.setItem(1, 1, QTableWidgetItem("3"))
-        self.tableWidget.setItem(2, 0, QTableWidgetItem("4"))
-        self.tableWidget.setItem(2, 1, QTableWidgetItem("5"))
+        self.table_widget.setItem(0, 0, QTableWidgetItem("0"))
+        self.table_widget.setItem(0, 1, QTableWidgetItem("1"))
+        self.table_widget.setItem(1, 0, QTableWidgetItem("2"))
+        self.table_widget.setItem(1, 1, QTableWidgetItem("3"))
+        self.table_widget.setItem(2, 0, QTableWidgetItem("4"))
+        self.table_widget.setItem(2, 1, QTableWidgetItem("5"))
 
-        self.tableWidget.cellChanged.connect(self.on_cell_changed)
-        self.tableWidget.currentCellChanged.connect(self.on_current_cell_changed)
-        self.tableWidget.cellClicked.connect(self.on_cell_clicked)
-        self.tableWidget.cellDoubleClicked.connect(self.on_cell_double_clicked)
+        self.table_widget.cellChanged.connect(self.on_cell_changed)
+        self.table_widget.currentCellChanged.connect(self.on_current_cell_changed)
+        self.table_widget.cellClicked.connect(self.on_cell_clicked)
+        self.table_widget.cellDoubleClicked.connect(self.on_cell_double_clicked)
 
-        # self.tableWidget.itemChanged.connect(self.on_item_changed)
-        # self.tableWidget.currentItemChanged.connect(self.on_current_item_changed)
-        # self.tableWidget.itemClicked.connect(self.on_item_clicked)
-        # self.tableWidget.itemDoubleClicked.connect(self.on_item_double_clicked)
+        # self.table_widget.itemChanged.connect(self.on_item_changed)
+        # self.table_widget.currentItemChanged.connect(self.on_current_item_changed)
+        # self.table_widget.itemClicked.connect(self.on_item_clicked)
+        # self.table_widget.itemDoubleClicked.connect(self.on_item_double_clicked)
 
-        self.setCentralWidget(self.tableWidget)
+        self.setCentralWidget(self.table_widget)
         self.setGeometry(1000, 1000, 600, 600)
 
     def on_cell_changed(self, row, col):

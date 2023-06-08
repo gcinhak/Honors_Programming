@@ -8,19 +8,19 @@ class MainWindow(QMainWindow):
         self.init_ui()
 
     def init_ui(self):
-        self.tableWidget = QTableWidget(self)
-        self.tableWidget.setRowCount(2)
-        self.tableWidget.setColumnCount(2)
-        self.tableWidget.setHorizontalHeaderLabels(["1열", "2열"])
-        self.tableWidget.setVerticalHeaderItem(0, QTableWidgetItem("1행"))
-        self.tableWidget.setVerticalHeaderItem(1, QTableWidgetItem("2행"))
+        self.table_widget = QTableWidget(self)
+        self.table_widget.setRowCount(2)
+        self.table_widget.setColumnCount(2)
+        self.table_widget.setHorizontalHeaderLabels(["1열", "2열"])
+        self.table_widget.setVerticalHeaderItem(0, QTableWidgetItem("1행"))
+        self.table_widget.setVerticalHeaderItem(1, QTableWidgetItem("2행"))
 
-        self.tableWidget.setItem(0, 0, QTableWidgetItem("(0,0)"))
-        self.tableWidget.setItem(0, 1, QTableWidgetItem("(0,1)"))
-        self.tableWidget.setItem(1, 0, QTableWidgetItem("(1,0)"))
-        self.tableWidget.setItem(1, 1, QTableWidgetItem("(1,1)"))
+        self.table_widget.setItem(0, 0, QTableWidgetItem("(0,0)"))
+        self.table_widget.setItem(0, 1, QTableWidgetItem("(0,1)"))
+        self.table_widget.setItem(1, 0, QTableWidgetItem("(1,0)"))
+        self.table_widget.setItem(1, 1, QTableWidgetItem("(1,1)"))
 
-        self.setCentralWidget(self.tableWidget)
+        self.setCentralWidget(self.table_widget)
         self.setGeometry(1000, 1000, 500, 500)
 
 if __name__ == "__main__":
