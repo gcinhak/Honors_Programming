@@ -12,6 +12,7 @@ class MainWindow(QMainWindow):
         ### widget 생성 ###
         self.gp_list = []
         self.cd_list = []
+
         for _ in range(5):
             self.gp_list.append(QLineEdit("0"))
             self.cd_list.append(QLineEdit("0"))

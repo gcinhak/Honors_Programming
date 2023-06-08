@@ -13,7 +13,9 @@ class MainWindow(QMainWindow):
         for i in range(9):
             self.btn_list.append(QPushButton(""))
             self.btn_list[i].clicked.connect(self.on_btn_clicked)
+            # 위젯의 사이즈 정책을 설정( Expanding )
             self.btn_list[i].setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+
         btn_reset = QPushButton("Reset")
         btn_reset.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
         btn_reset.clicked.connect(self.on_btn_reset_clicked)
@@ -37,15 +39,17 @@ class MainWindow(QMainWindow):
             for j in range(3):
                 self.btn_list[i * 3 + j].setText("")
 
+    def toggle_mark(self):
+        if self.mark == "O":
+            self.mark = "X"
+        elif self.mark == "X":
+            self.mark = "O"
+
     def on_btn_clicked(self):
-        e = self.sender()
-        print(self.mark)
-        if e.text() == "":
-            e.setText(self.mark)
-            if self.mark == "O":
-                self.mark = "X"
-            elif self.mark == "X":
-                self.mark = "O"
+        clicked_button  = self.sender()
+        if clicked_button .text() == "":
+            clicked_button .setText(self.mark)
+            self.toggle_mark()
         else:
             return
 

@@ -11,6 +11,7 @@ class MainWindow(QMainWindow):
         ### widget 생성 ###
         self.gp_list = []
         self.cd_list = []
+
         for _ in range(5):
             self.gp_list.append(QLineEdit("0"))
             self.cd_list.append(QLineEdit("0"))
@@ -46,17 +47,27 @@ class MainWindow(QMainWindow):
         wgpa = 0
         unwgpa = 0
         total_credit = 0
+        total_gp_credit = 0
 
         for i in range(5):
-            wgpa += float(self.gp_list[i].text()) * float(self.cd_list[i].text())
+            total_gp_credit += float(self.gp_list[i].text()) * float(self.cd_list[i].text())
             unwgpa += float(self.gp_list[i].text())
             total_credit += float(self.cd_list[i].text())
 
+        # wgpa, unwgpa 계산하여 저장
+        try:
+            wgpa = total_gp_credit / total_credit
+            unwgpa = unwgpa / 5
+        except ZeroDivisionError:
+            print("Error: Division by zero")
+            wgpa = 0.0
+            unwgpa = 0.0
+
         # 레이블에 출력
         if self.radio_wgpa.isChecked():
-            self.lb_gpa.setText(str(wgpa / total_credit))
+            self.lb_gpa.setText(str(wgpa))
         elif self.radio_unwgpa.isChecked():
-            self.lb_gpa.setText(str(unwgpa / 5))
+            self.lb_gpa.setText(str(unwgpa))
 
 if __name__ == '__main__':
     app = QApplication([])
