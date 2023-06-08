@@ -1,32 +1,26 @@
 import sys
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QMainWindow, QTableWidget, QTableWidgetItem, QApplication, QPushButton, QVBoxLayout, QWidget
 
 
-class MyWindow(QMainWindow):
+class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.init_ui()
 
     def init_ui(self):
-        self.tableWidget = QTableWidget()
+        self.tableWidget = QTableWidget(self)
+        self.tableWidget.setRowCount(3)
         self.tableWidget.setColumnCount(2)
-        self.tableWidget.setRowCount(5)
-        self.btn = QPushButton("실행")
-        self.btn.clicked.connect(self.on_btn)
+        self.btn = QPushButton("click")
+        self.btn.setStyleSheet("font-size:28px;")
+        self.btn.clicked.connect(self.on_btn_clicked)
 
-        labels_horizontal_header = ["과목", "성적"]
-        self.tableWidget.setHorizontalHeaderLabels(labels_horizontal_header)
-
-        self.tableWidget.setItem(0, 0, QTableWidgetItem("국어"))
-        self.tableWidget.setItem(1, 0, QTableWidgetItem("영어"))
-        self.tableWidget.setItem(2, 0, QTableWidgetItem("수학"))
-        self.tableWidget.setItem(3, 0, QTableWidgetItem("과학"))
-
-        self.tableWidget.setItem(0, 1, QTableWidgetItem("100"))
-        self.tableWidget.setItem(1, 1, QTableWidgetItem("90"))
-        self.tableWidget.setItem(2, 1, QTableWidgetItem("80"))
-        self.tableWidget.setItem(3, 1, QTableWidgetItem("50"))
-
+        self.tableWidget.setItem(0, 0, QTableWidgetItem("0"))
+        self.tableWidget.setItem(0, 1, QTableWidgetItem("1"))
+        self.tableWidget.setItem(1, 0, QTableWidgetItem("2"))
+        self.tableWidget.setItem(1, 1, QTableWidgetItem("3"))
+        self.tableWidget.setItem(2, 0, QTableWidgetItem("4"))
+        self.tableWidget.setItem(2, 1, QTableWidgetItem("5"))
 
         vbox = QVBoxLayout()
         vbox.addWidget(self.tableWidget)
@@ -35,34 +29,29 @@ class MyWindow(QMainWindow):
         widget = QWidget()
         widget.setLayout(vbox)
         self.setCentralWidget(widget)
-        self.setWindowTitle('QDoubleSpinBox')
-        self.setGeometry(1500, 500, 500, 500)
+        self.setGeometry(1000, 1000, 500, 400)
 
-    def on_btn(self):
-        # self.tableWidget.setRowCount(6)
-        # print(self.tableWidget.currentRow())
-        # self.tableWidget.setCurrentCell(1,1)
-        # self.tableWidget.setCurrentItem(QTableWidgetItem("(100,100)"))
-        # for i in self.tableWidget.selectedItems():
-        #     print(i.text())
-        # for i in self.tableWidget.selectedRanges():
-        #     print(i.bottomRow())
-        #     print(i.columnCount())
-        #     print(i.leftColumn())
-        #     print(i.rightColumn())
-        #     print(i.rowCount())
-        #     print(i.topRow())
-        # print(self.tableWidget.rowCount())
-        # print(self.tableWidget.currentRow())
-        # print(self.tableWidget.selectedItems())
-        result = 0
-        for i in self.tableWidget.selectedItems():
-            result += int(i.text())
-            # print(i.text())
-        print(result)
+    def on_btn_clicked(self):
+        print("rowCount():{} columnCount():{}".format(self.tableWidget.rowCount(), self.tableWidget.columnCount()))
+        print("currentRow():{} currentColumn():{}".format(self.tableWidget.currentRow(), self.tableWidget.currentColumn()))
+        print("--------------------------------")
+        print("item(0,0):{} item(1,1):{}".format(self.tableWidget.item(0,0).text(), self.tableWidget.item(1,1).text()))
+        print("currentItem():{}".format(self.tableWidget.currentItem().text()))
+        print("--------------------------------")
+        for item_obj in self.tableWidget.selectedItems():
+            if self.tableWidget.selectedItems()[0] == item_obj:
+                print("selectedItems():{}".format(item_obj.text()), end=" ")
+            else:
+                print("{}".format(item_obj.text()), end=" ")
+        print("\n--------------------------------")
+        for item_range in self.tableWidget.selectedRanges():
+            print("rowCount():{} columnCount():{}\ntopRow():{} bottomRow():{}\nleftColumn():{} rightColumn(): {}".format
+                  (item_range.rowCount(), item_range.columnCount(), item_range.topRow(), item_range.bottomRow(),
+                   item_range.leftColumn(), item_range.rightColumn()))
+            print("--------------------------------")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
-    mywindow = MyWindow()
-    mywindow.show()
+    window = MainWindow()
+    window.show()
     app.exec_()

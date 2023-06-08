@@ -1,51 +1,58 @@
-## Ex 5-21. QTableWidget.
-
 import sys
-
-from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QMainWindow, QTableWidget, QTableWidgetItem, QApplication
 
 
-class MyApp(QWidget):
-
+class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.initUI()
+        self.init_ui()
 
-    def initUI(self):
-        self.tableWidget = QTableWidget()
-        self.tableWidget.setRowCount(20)
-        self.tableWidget.setColumnCount(4)
+    def init_ui(self):
+        self.tableWidget = QTableWidget(self)
+        self.tableWidget.setRowCount(3)
+        self.tableWidget.setColumnCount(2)
 
-        # 기본값: QAbstractItemView.DoubleClicked
-        # self.tableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
-        # self.tableWidget.setEditTriggers(QAbstractItemView.DoubleClicked)
-        # self.tableWidget.setEditTriggers(QAbstractItemView.AllEditTriggers)
+        self.tableWidget.setItem(0, 0, QTableWidgetItem("0"))
+        self.tableWidget.setItem(0, 1, QTableWidgetItem("1"))
+        self.tableWidget.setItem(1, 0, QTableWidgetItem("2"))
+        self.tableWidget.setItem(1, 1, QTableWidgetItem("3"))
+        self.tableWidget.setItem(2, 0, QTableWidgetItem("4"))
+        self.tableWidget.setItem(2, 1, QTableWidgetItem("5"))
 
+        self.tableWidget.cellChanged.connect(self.on_cell_changed)
+        self.tableWidget.currentCellChanged.connect(self.on_current_cell_changed)
+        self.tableWidget.cellClicked.connect(self.on_cell_clicked)
+        self.tableWidget.cellDoubleClicked.connect(self.on_cell_double_clicked)
 
-        # self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
-        # self.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeToContents)
+        # self.tableWidget.itemChanged.connect(self.on_item_changed)
+        # self.tableWidget.currentItemChanged.connect(self.on_current_item_changed)
+        # self.tableWidget.itemClicked.connect(self.on_item_clicked)
+        # self.tableWidget.itemDoubleClicked.connect(self.on_item_double_clicked)
 
-        # self.tableWidget.setSelectionMode(QAbstractItemView.NoSelection)
-        # self.tableWidget.setSelectionMode(QAbstractItemView.SingleSelection)
-        # self.tableWidget.setSelectionMode(QAbstractItemView.MultiSelection)
-        # self.tableWidget.setSelectionMode(QAbstractItemView.ExtendedSelection)
-        # self.tableWidget.setSelectionMode(QAbstractItemView.ContiguousSelection)
+        self.setCentralWidget(self.tableWidget)
+        self.setGeometry(1000, 1000, 600, 600)
 
-        for i in range(20):
-            for j in range(4):
-                self.tableWidget.setItem(i, j, QTableWidgetItem(str(i+j)))
+    def on_cell_changed(self, row, col):
+        print("cellChanged", row, col)
+    def on_current_cell_changed(self, row, col,prow,pcol):
+        print("currentCellChanged", prow, pcol, row, col)
+    def on_cell_clicked(self, row, col):
+        print("cellClicked", row, col)
+    def on_cell_double_clicked(self, row, col):
+        print("cellDoubleClicked", row, col)
 
-        layout = QVBoxLayout()
-        layout.addWidget(self.tableWidget)
-        self.setLayout(layout)
+    # def on_item_changed(self, item):
+    #     print("itemChanged", item.text())
+    # def on_current_item_changed(self, item, pitem):
+    #     if pitem != None:
+    #         print("currentItemChanged", pitem.text(), item.text())
+    # def on_item_clicked(self, item):
+    #     print("itemClicked", item.text())
+    # def on_item_double_clicked(self, item):
+    #     print("itemDoubleClicked", item.text())
 
-        self.setWindowTitle('QTableWidget')
-        self.setGeometry(300, 100, 600, 400)
-        self.show()
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app = QApplication(sys.argv)
-    ex = MyApp()
-    sys.exit(app.exec_())
+    window = MainWindow()
+    window.show()
+    app.exec_()
