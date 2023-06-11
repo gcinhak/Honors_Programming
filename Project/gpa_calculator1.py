@@ -74,13 +74,16 @@ class MainWindow(QMainWindow):
         cd5 = float(self.le_credit5.text())
 
         # wgpa, unwgpa 계산하여 저장
-        try:
-            wgpa = (gp1*cd1+gp2*cd2+gp3*cd3+gp4*cd4+gp5*cd5) / (cd1+cd2+cd3+cd4+cd5)
-            unwgpa = (gp1+gp2+gp3+gp4+gp5) / 5
-        except ZeroDivisionError:
-            print("Error: Division by zero")
-            wgpa = 0.0
-            unwgpa = 0.0
+        # try:
+        #     wgpa = (gp1*cd1+gp2*cd2+gp3*cd3+gp4*cd4+gp5*cd5) / (cd1+cd2+cd3+cd4+cd5)
+        #     unwgpa = (gp1+gp2+gp3+gp4+gp5) / 5
+        # except ZeroDivisionError:
+        #     print("Error: Division by zero")
+        #     wgpa = 0.0
+        #     unwgpa = 0.0
+
+        wgpa = (gp1 * cd1 + gp2 * cd2 + gp3 * cd3 + gp4 * cd4 + gp5 * cd5) / (cd1 + cd2 + cd3 + cd4 + cd5)
+        unwgpa = (gp1 + gp2 + gp3 + gp4 + gp5) / 5
 
         # 레이블에 출력
         if self.radio_wgpa.isChecked():

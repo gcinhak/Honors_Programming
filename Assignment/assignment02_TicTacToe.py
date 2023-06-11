@@ -47,11 +47,9 @@ class MainWindow(QMainWindow):
 
     def on_btn_clicked(self):
         clicked_button  = self.sender()
-        if clicked_button .text() == "":
-            clicked_button .setText(self.mark)
+        if clicked_button.text() == "":
+            clicked_button.setText(self.mark)
             self.toggle_mark()
-        else:
-            return
 
 if __name__ == '__main__':
     app = QApplication([])

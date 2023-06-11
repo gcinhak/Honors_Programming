@@ -46,18 +46,19 @@ class MainWindow(QMainWindow):
     def on_btn_cal_clicked(self):
         wgpa = 0
         unwgpa = 0
+        total_gp = 0
         total_credit = 0
         total_gp_credit = 0
 
         for i in range(5):
             total_gp_credit += float(self.gp_list[i].text()) * float(self.cd_list[i].text())
-            unwgpa += float(self.gp_list[i].text())
+            total_gp += float(self.gp_list[i].text())
             total_credit += float(self.cd_list[i].text())
 
-        # wgpa, unwgpa 계산하여 저장
+        # wgpa, total_gp 계산하여 저장
         try:
             wgpa = total_gp_credit / total_credit
-            unwgpa = unwgpa / 5
+            unwgpa = total_gp / 5
         except ZeroDivisionError:
             print("Error: Division by zero")
             wgpa = 0.0
