@@ -1,5 +1,6 @@
 import sys
-from PyQt5.QtWidgets import QMainWindow, QTableWidget, QTableWidgetItem, QApplication, QPushButton, QVBoxLayout, QWidget
+from PyQt5.QtWidgets import QMainWindow, QTableWidget, QTableWidgetItem, QApplication, QPushButton, QVBoxLayout, \
+    QWidget, QLabel
 
 
 class MainWindow(QMainWindow):
@@ -9,7 +10,7 @@ class MainWindow(QMainWindow):
 
     def init_ui(self):
         self.table_widget = QTableWidget()
-        self.table_widget.setRowCount(3)
+        self.table_widget.setRowCount(4)
         self.table_widget.setColumnCount(2)
         self.btn = QPushButton("click")
         self.btn.setStyleSheet("font-size:28px;")
