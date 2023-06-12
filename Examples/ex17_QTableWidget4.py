@@ -1,6 +1,6 @@
 import sys
 from PyQt5.QtWidgets import QMainWindow, QTableWidget, QTableWidgetItem, QApplication, QPushButton, QVBoxLayout, \
-    QWidget, QHBoxLayout, QHeaderView
+    QWidget, QHBoxLayout, QHeaderView, QAbstractItemView
 
 
 class MainWindow(QMainWindow):

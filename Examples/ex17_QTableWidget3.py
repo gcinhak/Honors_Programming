@@ -57,7 +57,7 @@ class MainWindow(QMainWindow):
         widget = QWidget()
         widget.setLayout(vbox)
         self.setCentralWidget(widget)
-        self.setGeometry(1000, 1000, 600, 600)
+        self.setGeometry(1000, 500, 400, 300)
 
     def on_btn_add_row_clicked(self):
         self.table_widget.insertRow(self.table_widget.rowCount())
