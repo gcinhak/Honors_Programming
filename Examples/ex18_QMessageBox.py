@@ -9,29 +9,33 @@ class MainWindow(QMainWindow):
 
     def init_ui(self):
         # About_button
-        self.btn_about = QPushButton()
-        self.btn_about.setText("About")
-        self.btn_about.clicked.connect(self.About_event)
+        self.btn_about = QPushButton("About")
+        self.btn_about.clicked.connect(self.about_event)
 
         # Information_button
         self.btn_information = QPushButton()
         self.btn_information.setText("Information")
-        self.btn_information.clicked.connect(self.Information_event)
+        self.btn_information.clicked.connect(self.information_event)
 
         # Warning_button
         self.btn_warning = QPushButton()
         self.btn_warning.setText("Warning")
-        self.btn_warning.clicked.connect(self.Warning_event)
+        self.btn_warning.clicked.connect(self.warning_event)
 
         # Question_button
         self.btn_question = QPushButton()
         self.btn_question.setText("Question")
-        self.btn_question.clicked.connect(self.Question_event)
+        self.btn_question.clicked.connect(self.question_event)
 
         # Critical_button
         self.btn_critical = QPushButton()
         self.btn_critical.setText("Critical")
-        self.btn_critical.clicked.connect(self.Critical_event)
+        self.btn_critical.clicked.connect(self.critical_event)
+
+        # Close_button
+        self.btn_close = QPushButton()
+        self.btn_close.setText("Close")
+        self.btn_close.clicked.connect(self.close_event)
 
         hbox = QHBoxLayout()
         hbox.addWidget(self.btn_about)
@@ -39,6 +43,7 @@ class MainWindow(QMainWindow):
         hbox.addWidget(self.btn_warning)
         hbox.addWidget(self.btn_question)
         hbox.addWidget(self.btn_critical)
+        # hbox.addWidget(self.btn_close)
 
         widget = QWidget(self)
         widget.setLayout(hbox)
@@ -46,11 +51,11 @@ class MainWindow(QMainWindow):
 
     ### Slot 정의 ###
     # About 버튼 클릭 이벤트 slot
-    def About_event(self):
-        QMessageBox.about(self, 'About Title', 'About Message')
+    def about_event(self):
+        QMessageBox.about(self, 'About Title', 'Message')
 
     # Information 버튼 클릭 이벤트 slot
-    def Information_event(self):
+    def information_event(self):
         buttonReply = QMessageBox.information(
             self, 'Information Title', "Information Message",
             QMessageBox.Yes | QMessageBox.Save | QMessageBox.Cancel | QMessageBox.Reset | QMessageBox.No,
@@ -69,7 +74,7 @@ class MainWindow(QMainWindow):
             print('No clicked.')
 
     # Warning 버튼 클릭 이벤트 slot
-    def Warning_event(self):
+    def warning_event(self):
         buttonReply = QMessageBox.warning(
             self, 'Warning Title', "Warning Message",
             QMessageBox.Yes | QMessageBox.Save | QMessageBox.Cancel | QMessageBox.Reset | QMessageBox.No,
@@ -88,7 +93,7 @@ class MainWindow(QMainWindow):
             print('No clicked.')
 
     # Question 버튼 클릭 이벤트 slot
-    def Question_event(self):
+    def question_event(self):
         buttonReply = QMessageBox.question(
             self, 'Question Title', "Question Message",
             QMessageBox.Yes | QMessageBox.Save | QMessageBox.Cancel | QMessageBox.Reset | QMessageBox.No,
@@ -107,7 +112,7 @@ class MainWindow(QMainWindow):
             print('No clicked.')
 
     # Critical 버튼 클릭 이벤트 slot
-    def Critical_event(self):
+    def critical_event(self):
         buttonReply = QMessageBox.critical(
             self, 'Critical Title', "Critical Message",
             QMessageBox.Yes | QMessageBox.Save | QMessageBox.Cancel | QMessageBox.Reset | QMessageBox.No,
@@ -124,6 +129,10 @@ class MainWindow(QMainWindow):
             print('Reset clicked.')
         elif buttonReply == QMessageBox.No:
             print('No clicked.')
+
+    # Critical 버튼 클릭 이벤트 slot
+    def close_event(self):
+        QApplication.quit()
 
 if __name__ == "__main__":
     app = QApplication([])
