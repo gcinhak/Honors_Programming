@@ -25,7 +25,7 @@ class MainWindow(QMainWindow):
         self.setGeometry(1000, 300, 500, 500)
 
 if __name__ == "__main__":
-    app = QApplication(sys.argv)
+    app = QApplication([])
     window = MainWindow()
     window.show()
-    app.exec_()
+    sys.exit(app.exec_())

@@ -75,7 +75,7 @@ class MainWindow(QMainWindow):
         self.table_widget.clearContents()
 
 if __name__ == "__main__":
-    app = QApplication(sys.argv)
+    app = QApplication([])
     window = MainWindow()
     window.show()
-    app.exec_()
+    sys.exit(app.exec_())
