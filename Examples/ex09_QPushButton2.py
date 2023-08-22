@@ -21,7 +21,7 @@ class MainWindow(QMainWindow):
         self.btn3 = QPushButton('Button3')
         self.btn3.setEnabled(False)
 
-        self.btn1.clicked.connect(self.on_clicked_btn1)
+        self.btn1.toggled.connect(self.on_clicked_btn1)
         self.btn2.clicked.connect(self.on_clicked_btn2)
         self.btn3.clicked.connect(self.on_clicked_btn3)
 

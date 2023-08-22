@@ -1,7 +1,7 @@
 ### Example8-6 NestedLayout2 ###
 
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QLabel, QGridLayout
+from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QBoxLayout, QHBoxLayout, QLabel, QGridLayout
 
 
 class MainWindow(QMainWindow):
@@ -11,7 +11,7 @@ class MainWindow(QMainWindow):
 
     def init_ui(self):
         widget = QWidget()
-        layout_vertical = QVBoxLayout()
+        layout_vertical = QBoxLayout(QBoxLayout.TopToBottom)
         layout_horizontal = QHBoxLayout()
         layout_grid = QGridLayout()
 
@@ -36,7 +36,6 @@ class MainWindow(QMainWindow):
         layout_vertical.addLayout(layout_horizontal)
 
         widget.setLayout(layout_vertical)
-
         self.setCentralWidget(widget)
         self.setWindowTitle("Nested Layout")
 
