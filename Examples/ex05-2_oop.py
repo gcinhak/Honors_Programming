@@ -3,6 +3,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QLabel
 
+# QMainWindow 상속
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()

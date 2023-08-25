@@ -45,7 +45,7 @@ class MainWindow(QMainWindow):
         hbox.addWidget(self.btn_critical)
         # hbox.addWidget(self.btn_close)
 
-        widget = QWidget(self)
+        widget = QWidget()
         widget.setLayout(hbox)
         self.setCentralWidget(widget)
 

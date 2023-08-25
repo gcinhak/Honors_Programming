@@ -27,6 +27,7 @@ class MainWindow(QMainWindow):
         vbox.addWidget(self.checkbox_1)
         vbox.addWidget(self.checkbox_2)
         vbox.addWidget(self.checkbox_3)
+        print(self.checkbox_1.text(), self.checkbox_2.text(), self.checkbox_3.text())
 
         # 윈도우 설정
         widget = QWidget()

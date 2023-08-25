@@ -1,8 +1,9 @@
 ### Example5 ###
 
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QLabel
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel
 
+# QWidget 상속
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()

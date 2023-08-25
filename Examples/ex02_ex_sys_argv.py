@@ -1,4 +1,5 @@
 ### Example2 ###
+# 실행: python ex02_ex_sys_argv.py --server-ip=189.120.0.1 --port=8080
 
 import sys
 from PyQt5.QtWidgets import QApplication, QLabel
@@ -9,7 +10,7 @@ server_ip = None
 port = None
 
 for arg in sys.argv:
-    if arg.startswith('--server-ip'):
+    if arg.startswith('--server-ip='):
         server_ip = arg.split("=")[1]
     elif arg.startswith('--port='):
         port = arg.split("=")[1]

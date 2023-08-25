@@ -9,9 +9,8 @@ label = QLabel("Hello World")
 label.show()
 
 print("Before event loop")
-# 시스템을 바로 종료
-# sys.exit(app.exec_())
 
-# 이벤트 루프를 종료 하고, 코드 진행
-app.exec_()
+sys.exit(app.exec_()) # 시스템을 바로 종료
+app.exec_() # 이벤트 루프를 종료 하고, 코드 진행
+
 print("After event loop")
