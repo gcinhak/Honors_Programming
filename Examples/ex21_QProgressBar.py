@@ -41,7 +41,7 @@ class MainWindow(QMainWindow):
     def start_process(self):
         self.btn_start.setEnabled(False)
 
-        self.timer.setInterval(50)
+        self.timer.setInterval()
         self.timer.timeout.connect(self.timer_progress)
         self.timer.start()
 
