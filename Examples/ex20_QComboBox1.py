@@ -24,7 +24,7 @@ class MainWindow(QMainWindow):
         # btn.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
         # 콤보박스 시그널 설정
-        # self.cb.activated.connect(self.changed_item)
+        self.cb.activated.connect(self.changed_item)
         # self.cb.currentIndexChanged.connect(self.changed_item)
         # self.cb.currentTextChanged.connect(self.changed_item)
         # self.cb.highlighted.connect(self.changed_item)
@@ -51,14 +51,14 @@ class MainWindow(QMainWindow):
 
     def on_clicked_btn(self):
         # self.lb.setText("현재 index: "+str(self.cb.currentIndex()))
-        self.lb.setText("현재 text: "+self.cb.currentText())
+        # self.lb.setText("현재 text: "+self.cb.currentText())
         # self.lb.setText("항목 개수: "+str(self.cb.count()))
         # self.lb.setText("2번째 항목은: "+str(self.cb.itemText(1)))
         # self.cb.removeItem(self.cb.currentIndex())
         # self.cb.clear()
 
-        # self.cb.setCurrentIndex(1)
-        # self.cb.setCurrentText('Option4')
+        self.cb.setCurrentIndex(1)
+        self.cb.setCurrentText('Option4')
 
 if __name__ == "__main__":
     app = QApplication([])
