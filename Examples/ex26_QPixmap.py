@@ -27,7 +27,7 @@ class MainWindow(QMainWindow):
 
     def on_btn1(self):
         pixmap_web = QPixmap()
-        url_string="https://petnolza.com/wp-content/uploads/2021/11/dog-smart7.jpg"
+        url_string="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/P.t.altaica_Tomak_Male.jpg/800px-P.t.altaica_Tomak_Male.jpg"
         image_from_web = urllib.request.urlopen(url_string).read()
         pixmap_web.loadFromData(image_from_web)
         pixmap_web = pixmap_web.scaledToWidth(600)
@@ -35,7 +35,7 @@ class MainWindow(QMainWindow):
 
     def on_btn2(self):
         pixmap_file = QPixmap()
-        pixmap_file.load("../cat.jpg")
+        pixmap_file.load("../img/cat.jpg")
         pixmap_file = pixmap_file.scaledToWidth(600)
         self.lb.setPixmap(pixmap_file)
 

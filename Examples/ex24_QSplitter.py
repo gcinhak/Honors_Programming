@@ -31,6 +31,7 @@ class MainWindow(QMainWindow):
         self.split_2.setOrientation(Qt.Horizontal)
         self.split_2.addWidget(self.split_1)
         self.split_2.addWidget(self.te_3)
+        self.split_2.setRubberBand(100)
 
         self.vbox.addWidget(self.split_2)
         widget = QWidget()

@@ -8,7 +8,7 @@ class MainWindow(QMainWindow):
         super().__init__()
         # self.setWindowFlags(Qt.FramelessWindowHint)
         # self.setWindowFlags(Qt.FramelessWindowHint | Qt.WindowStaysOnTopHint)
-        self.setWindowFlags(Qt.WindowCloseButtonHint | Qt.WindowMinimizeButtonHint | Qt.WindowStaysOnTopHint)
+        # self.setWindowFlags(Qt.WindowCloseButtonHint | Qt.WindowMinimizeButtonHint | Qt.WindowStaysOnTopHint)
         # self.setAttribute(Qt.WA_TranslucentBackground)
         self.setWindowTitle("시계")
         self.setFixedSize(450, 200)
