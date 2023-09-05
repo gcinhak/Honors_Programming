@@ -1,7 +1,7 @@
 import sys
 
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow, QTextEdit
+from PyQt5.QtWidgets import QApplication, QLabel, QMainWindow
 
 
 class MainWindow(QMainWindow):
@@ -47,9 +47,8 @@ class MainWindow(QMainWindow):
             self.label.setText("mouseDoubleClickEvent RIGHT")
 
 
-app = QApplication(sys.argv)
-
-window = MainWindow()
-window.show()
-
-app.exec()
+if __name__ == "__main__":
+    app = QApplication([])
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec_())

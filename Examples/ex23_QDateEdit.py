@@ -10,18 +10,18 @@ class MainWindow(QMainWindow):
         self.init_ui()
 
     def init_ui(self):
-        datetimeedit = QDateTimeEdit(self)
+        datetimeedit = QDateTimeEdit()
         datetimeedit.setDateTime(QDateTime.currentDateTime())
         datetimeedit.setDateTimeRange(QDateTime(1900, 1, 1, 00, 00, 00), QDateTime(2100, 1, 1, 00, 00, 00))
         datetimeedit.setDisplayFormat('yyyy.MM.dd hh:mm:ss')
 
-        dateedit = QDateEdit(self)
+        dateedit = QDateEdit()
         dateedit.setDate(QDate.currentDate())
         dateedit.setMinimumDate(QDate(1900, 1, 1))
         dateedit.setMaximumDate(QDate(2100, 12, 31))
         # dateedit.setDateRange(QDate(1900, 1, 1), QDate(2100, 12, 31))
 
-        timeedit = QTimeEdit(self)
+        timeedit = QTimeEdit()
         timeedit.setTime(QTime.currentTime())
         timeedit.setTimeRange(QTime(00, 00, 00), QTime(24, 00, 00))
         timeedit.setDisplayFormat('hh:mm:ss')

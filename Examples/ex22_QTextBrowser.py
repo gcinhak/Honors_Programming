@@ -14,6 +14,7 @@ class MainWindow(QMainWindow):
         self.le.returnPressed.connect(self.append_text)
 
         self.tb = QTextBrowser()
+        self.tb.setSource(QUrl.fromLocalFile("ex20_QComboBox1.py"))
         self.tb.setOpenExternalLinks(True)
 
         self.clear_btn = QPushButton('Clear')
