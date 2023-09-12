@@ -11,22 +11,23 @@ class MainWindow(QMainWindow):
 
     def init_ui(self):
         self.list_widget = QListWidget()
-        self.list_remove_widget = QListWidget()
+        self.list_widget_remove = QListWidget()
         self.btn_add_item = QPushButton("add")
         self.btn_insert_item = QPushButton("insert")
         self.btn_print_item = QPushButton("Print")
         self.btn_print_multi_items = QPushButton("Print_Multi")
         self.btn_remove_item = QPushButton("Remove")
         self.btn_clear_item = QPushButton("Clear")
-        self.line_add_item = QLineEdit()
-        self.line_insert_item = QLineEdit()
+        self.le_add_item = QLineEdit()
+        self.le_insert_item = QLineEdit()
         self.spin_insert_row = QSpinBox()
 
-        self.vbox = QVBoxLayout()
+        self.layout_main = QVBoxLayout()
         self.hbox_listwidget = QHBoxLayout()
         self.hbox_add = QHBoxLayout()
         self.hbox_insert = QHBoxLayout()
         self.hbox_btn = QHBoxLayout()
+
         self.init_widget()
 
     def init_widget(self):
@@ -34,8 +35,8 @@ class MainWindow(QMainWindow):
         self.list_widget.itemClicked.connect(self.chkItemClicked)
         self.list_widget.itemDoubleClicked.connect(self.chkItemDoubleClicked)
         self.list_widget.currentItemChanged.connect(self.chkCurrentItemChanged)
-        self.list_remove_widget.itemClicked.connect(self.removeListchkItemClicked)
-        # self.list_widget.setSelectionMode(QAbstractItemView.MultiSelection)
+        self.list_widget_remove.itemClicked.connect(self.removeListchkItemClicked)
+        self.list_widget.setSelectionMode(QAbstractItemView.MultiSelection)
 
         # 버튼에 기능 연결
         self.btn_add_item.clicked.connect(self.addListWidget)
@@ -47,12 +48,12 @@ class MainWindow(QMainWindow):
         self.btn_clear_item.clicked.connect(self.clearItem)
 
         self.hbox_listwidget.addWidget(self.list_widget)
-        self.hbox_listwidget.addWidget(self.list_remove_widget)
+        self.hbox_listwidget.addWidget(self.list_widget_remove)
 
-        self.hbox_add.addWidget(self.line_add_item)
+        self.hbox_add.addWidget(self.le_add_item)
         self.hbox_add.addWidget(self.btn_add_item)
 
-        self.hbox_insert.addWidget(self.line_insert_item)
+        self.hbox_insert.addWidget(self.le_insert_item)
         self.hbox_insert.addWidget(self.spin_insert_row)
         self.hbox_insert.addWidget(self.btn_insert_item)
 
@@ -61,17 +62,15 @@ class MainWindow(QMainWindow):
         self.hbox_btn.addWidget(self.btn_remove_item)
         self.hbox_btn.addWidget(self.btn_clear_item)
 
-        self.vbox.addLayout(self.hbox_listwidget)
-        self.vbox.addLayout(self.hbox_add)
-        self.vbox.addLayout(self.hbox_insert)
-        self.vbox.addLayout(self.hbox_btn)
+        self.layout_main.addLayout(self.hbox_listwidget)
+        self.layout_main.addLayout(self.hbox_add)
+        self.layout_main.addLayout(self.hbox_insert)
+        self.layout_main.addLayout(self.hbox_btn)
 
         widget = QWidget()
-        widget.setLayout(self.vbox)
+        widget.setLayout(self.layout_main)
         self.setCentralWidget(widget)
 
-
-    # ListWidget의 시그널에 연결된 함수들
     def chkItemClicked(self):
         print(self.list_widget.currentItem().text())
 
@@ -86,33 +85,33 @@ class MainWindow(QMainWindow):
     def chkCurrentItemChanged(self):
         print("Current Row : " + str(self.list_widget.currentRow()))
 
-    # 항목을 추가, 삽입하는 함수들
     def addListWidget(self):
-        self.addItemText = self.line_add_item.text()
+        self.addItemText = self.le_add_item.text()
         self.list_widget.addItem(self.addItemText)
 
     def insertListWidget(self):
         self.insertRow = self.spin_insert_row.value()
-        self.insertText = self.line_insert_item.text()
+        self.insertText = self.le_insert_item.text()
         self.list_widget.insertItem(self.insertRow, self.insertText)
 
-    # Button Function
     def printCurrentItem(self):
-        print(self.list_widget.currentItem().text())
+        if self.list_widget.count() != 0:
+            print(self.list_widget.currentItem().text())
 
     def printMultiItems(self):
         # 여러개를 선택했을 때, selectedItems()를 이용하여 선택한 항목을 List의 형태로 반환받습니다.
         # 그 후, for문을 이용하여 선택된 항목을 출력합니다.
         # 출력할 때, List안에는 QListWidgetItem객체가 저장되어 있으므로, .text()함수를 이용하여 문자열로 변환해야 합니다.
-        self.selectedList = self.list_widget.selectedItems()
-        for i in self.selectedList:
-            print(i.text())
+        if self.list_widget.count() != 0:
+            self.selectedList = self.list_widget.selectedItems()
+            for i in self.selectedList:
+                print(i.text())
 
     def removeCurrentItem(self):
         # ListWidget에서 현재 선택한 항목을 삭제할 때는 선택한 항목의 줄을 반환한 후, takeItem함수를 이용해 삭제합니다.
         self.removeItemRow = self.list_widget.currentRow()
-        self.currentitem = self.list_widget.currentItem()
-        self.list_remove_widget.addItem(self.currentitem.text())
+        if self.removeItemRow != -1:
+            self.list_widget_remove.addItem(self.list_widget.currentItem().text())
         self.list_widget.takeItem(self.removeItemRow)
 
     def removeListchkItemClicked(self):

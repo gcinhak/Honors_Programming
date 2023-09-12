@@ -33,7 +33,7 @@ class MainWindow(QMainWindow):
         self.layout_bottom.addWidget(self.button_4)
 
         self.groupbox_1.setLayout(self.layout_top)
-        self.groupbox_1.setCheckable(True)
+        # self.groupbox_1.setCheckable(True)
         self.groupbox_2.setLayout(self.layout_bottom)
         self.groupbox_2.setCheckable(True)
         self.groupbox_2.setChecked(False)

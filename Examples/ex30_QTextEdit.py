@@ -19,9 +19,9 @@ class MainWindow(QMainWindow):
 
     def init_widget(self):
         # TextEdit 설정
-        self.te.setTextColor(QColor(0,0,255,255))
+        self.te.setTextColor(QColor(250, 127, 8,255))
         self.te.setFontItalic(True)
-        self.te.setFontUnderline(False)
+        # self.te.setFontUnderline(False)
         self.te.setFontPointSize(20)
         self.te.setText("Hello World")
 

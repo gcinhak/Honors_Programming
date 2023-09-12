@@ -50,7 +50,6 @@ class MainWindow(QMainWindow):
         tab.setLayout(vbox)
         return tab
 
-
     def tab2(self):
         # 버튼 객체 만들기
         check1 = QCheckBox('체크버튼1')

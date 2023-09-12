@@ -31,7 +31,7 @@ class MainWindow(QMainWindow):
         # self.cal.setMaximumDate(QDate(2023, 9, 27))
 
         # Calendar 에서 선택한 값을 표시할 QLabel에 font 설정
-        self.calendar_label.setFont(QFont("D2Coding", 12))
+        self.calendar_label.setFont(QFont("Chiller", 25))
 
         # 현재날짜 달력에 표시 버튼
         self.today_btn.clicked.connect(self.select_today)
@@ -52,9 +52,9 @@ class MainWindow(QMainWindow):
         self.calendar_label.setText(str_date)
 
     def select_today(self):
-        self.cal.showToday() # 이번 달 페이지
+        # self.cal.showToday() # 이번 달 페이지
         # self.cal.showNextMonth() # 다음 달 페이지
-        # self.cal.setSelectedDate(QDate(2023, 9, 12)) # 특정 일로 이동
+        self.cal.setSelectedDate(QDate(2023, 9, 12)) # 특정 일로 이동
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
