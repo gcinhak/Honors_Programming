@@ -2,7 +2,7 @@ import pygame
 
 pygame.init()
 
-background = pygame.display.set_mode((480,360))
+background = pygame.display.set_mode((800,600))
 pygame.display.set_caption("GAME")
 
 fps = pygame.time.Clock()
@@ -21,13 +21,13 @@ while play:
             play = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_UP:
-                to_y = -1
+                to_y = -2
             elif event.key == pygame.K_DOWN:
-                to_y = 1
+                to_y = 2
             elif event.key == pygame.K_RIGHT:
-                to_x = 1
+                to_x = 2
             elif event.key == pygame.K_LEFT:
-                to_x = -1
+                to_x = -2
 
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_UP or event.key == pygame.K_DOWN:

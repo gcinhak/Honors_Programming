@@ -22,7 +22,7 @@ class MainWindow(QMainWindow):
 
     def init_widget(self):
         self.slider_volume.setRange(0, 100)
-        self.bell.setSource(QUrl.fromLocalFile("../bell.wav"))
+        self.bell.setSource(QUrl.fromLocalFile("bell.wav"))
 
         self.btn1.clicked.connect(self.on_btn1)
         self.btn2.clicked.connect(self.on_btn2)
