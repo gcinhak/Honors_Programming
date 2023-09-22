@@ -46,15 +46,15 @@ class MainWindow(QMainWindow):
 
     # 테이블 위젯에 DB 데이터 입력
     def set_tablewidget(self):
-        con = connection() # DB 연결
+        con = connection_db() # DB 연결
 
-        select_db(con)
+        select_db(con) # DB 데이터 조회 및 테이블 위젯에 DB 데이터 입력
 
         con.close() # DB 연결 해제
 
     # DB에 데이터 추가
     def on_btn_add(self):
-        con = connection()
+        con = connection_db()
         if self.le_name.text() != "":
             insert_db(con, self.le_name.text(), self.le_age.text())
             select_db(con)
@@ -65,7 +65,7 @@ class MainWindow(QMainWindow):
 
     # DB에 데이터 삭제
     def on_btn_del(self):
-        con = connection()
+        con = connection_db()
         try:
             id = table_widget.item(table_widget.currentRow(),0).text()
             delete_db(con,id)
@@ -86,19 +86,21 @@ def set_table(mem_data):
         table_widget.setItem(row,1,QTableWidgetItem(name))
         table_widget.setItem(row,2,QTableWidgetItem(str(age)))
 
-def connection():
+# DB 연결
+def connection_db():
     try:
         # SQLite DB 연결
-        con = sqlite3.connect("../db_examples/test.db")
+        con = sqlite3.connect("../1_db_examples/test.db")
         return con
     except Exception as e:
         print(e)
 
+# DB 데이터 입력
 def insert_db(con,name,age):
     try:
         # Cursor 객체 생성
         cur = con.cursor()
-        sql = "INSERT INTO test_table (mem_name, mem_age) VALUES(?,?)"
+        sql = "INSERT INTO test_table (test_name, test_age) VALUES(?,?)"
         data = (name,age)
         cur.execute(sql,data)
     except Exception as e:
@@ -106,6 +108,7 @@ def insert_db(con,name,age):
     finally:
         con.commit() # sql문을 commit한다
 
+# DB 데이터 조회
 def select_db(con):
     try:
         # Cursor 객체 생성
@@ -113,15 +116,16 @@ def select_db(con):
         sql = "SELECT * FROM test_table"
         cur.execute(sql)
         mem_data = cur.fetchall()
-        set_table(mem_data)
+        set_table(mem_data) # 테이블 위젯에 DB 데이터 입력
     except Exception as e:
         print('error:',e)
 
+# DB 데이터 삭제
 def delete_db(con,id):
     try:
         # Cursor 객체 생성
         cur = con.cursor()
-        sql = "DELETE FROM test_table WHERE mem_id =?"
+        sql = "DELETE FROM test_table WHERE test_id =?"
         cur.execute(sql, (id,))
         con.commit()
     except Exception as e:
