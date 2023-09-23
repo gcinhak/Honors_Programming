@@ -90,7 +90,7 @@ def set_table(mem_data):
 def connection_db():
     try:
         # SQLite DB 연결
-        con = sqlite3.connect("../1_db_examples/test.db")
+        con = sqlite3.connect("../2_db/test.db")
         return con
     except Exception as e:
         print(e)
