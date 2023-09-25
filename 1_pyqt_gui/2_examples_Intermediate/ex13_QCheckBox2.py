@@ -1,5 +1,3 @@
-### Example13. QCheckBox2 ###
-
 import sys
 from PyQt5.QtWidgets import QMainWindow, QApplication, QVBoxLayout, QWidget, QCheckBox
 

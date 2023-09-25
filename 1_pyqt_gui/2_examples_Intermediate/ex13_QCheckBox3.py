@@ -1,7 +1,8 @@
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QCheckBox
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QCheckBox, QMainWindow
 import sys
 
-class Example(QWidget):
+# 체크박스 클릭 갯수 제한 2개까지
+class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.init_ui()
@@ -25,10 +26,18 @@ class Example(QWidget):
         vbox.addWidget(self.cb3)
         vbox.addWidget(self.cb4)
 
+        # 윈도우 설정
+        widget = QWidget()
+        widget.setLayout(vbox)
+        self.setCentralWidget(widget)
+        self.setGeometry(300, 300, 300, 100)
+        self.setWindowTitle("CheckBox")
+
     def on_state_changed(self, state):
+        print("checekbox number:", state)
         checkboxes = [self.cb1, self.cb2, self.cb3, self.cb4]
         checked_boxes = [cb for cb in checkboxes if cb.isChecked()]
-        print(len(checked_boxes))
+        print("number of checked:", len(checked_boxes))
         if len(checked_boxes) >= 2:
             for cb in checkboxes:
                 if not cb.isChecked():
@@ -38,7 +47,7 @@ class Example(QWidget):
                 cb.setEnabled(True)
 
 if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    ex = Example()
-    ex.show()
+    app = QApplication([])
+    window = MainWindow()
+    window.show()
     sys.exit(app.exec_())
